@@ -20,6 +20,9 @@ const ButtonsPage = ({ className }) => (
       <Button raised accent>Accent</Button>
       <Button raised primary disabled onClick={() => alert('This should not fire')}>Disabled</Button>
       <RippleButton raised primary>JS Ripple</RippleButton>
+      <Button fab primary>+</Button>
+      <Button fab>+</Button>
+      <Button fab primary mini>+</Button>
     </div>
   </MaterialThemeProvider>
 );

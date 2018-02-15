@@ -24,6 +24,17 @@ class ButtonComponent extends PureComponent {
   }
 }
 
+const fab = css`
+  border-radius: 50%;
+  padding: 0;
+  width: 56px;
+  height: 56px;
+  min-width: 0;
+`
+const mini = css`
+  width: 40px;
+  height: 40px;
+`
 const primary = css`
   color: ${props => props.theme.primary};
 `;
@@ -110,6 +121,9 @@ const Button = styled(ButtonComponent)`
     font-size: .8125rem;
     line-height: 32px;
   `}
+  ${props => props.fab && fab}
+  ${props => props.fab && raised}
+  ${props => props.fab && props.mini && mini}
 `;
 
 export default Button;
