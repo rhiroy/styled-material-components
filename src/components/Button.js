@@ -55,7 +55,7 @@ const raised = css`
     svg {
       fill: white;
     }
-seda  color: white;
+  color: white;
     background-color: ${props.theme.accent};
     &:before {
       color: black;
