@@ -30,11 +30,14 @@ const fab = css`
   width: 56px;
   height: 56px;
   min-width: 0;
-`
+  padding: 16px;
+`;
+
 const mini = css`
   width: 40px;
   height: 40px;
-`
+  padding: 8px;
+`;
 const primary = css`
   color: ${props => props.theme.primary};
 `;
@@ -49,13 +52,19 @@ const raised = css`
     ${elevation(8)};
   }
   ${props => props.accent && `
-    color: white;
+    svg {
+      fill: white;
+    }
+seda  color: white;
     background-color: ${props.theme.accent};
     &:before {
       color: black;
     }
   `}
   ${props => props.primary && `
+    svg {
+      fill: white;
+    }
     color: white;
     background-color: ${props.theme.primary};
     &:before {
@@ -90,6 +99,9 @@ const Button = styled(ButtonComponent)`
   user-select: none;
   box-sizing: border-box;
   -webkit-appearance: none;
+  svg {
+    fill: #737373;
+  }
   ${elevationTransition}
 
   &:active {
