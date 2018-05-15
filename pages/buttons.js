@@ -9,6 +9,7 @@ import {
   ListItem,
   ListItemText,
   ListSubheader,
+  PageSetup,
   Snackbar,
   ThemeProvider,
   withRipple,
@@ -33,7 +34,7 @@ class ButtonsPage extends React.PureComponent {
 
   render() {
     return (
-      <ThemeProvider theme={{ primary: '#03A9F4' }}>
+      <PageSetup>
         <div className={this.props.className}>
           <h1>Flat Buttons</h1>
           <GridList>
@@ -183,7 +184,7 @@ class ButtonsPage extends React.PureComponent {
           autoHideDuration={1000}
           onRequestClose={this.handleClose}
         />
-      </ThemeProvider>
+      </PageSetup>
     );
   }
 }

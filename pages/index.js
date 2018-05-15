@@ -1,13 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
 import Link from 'next/link';
-import MaterialThemeProvider from '../src/theme/ThemeProvider';
-
 import List from '../src/components/List/List';
 import ListItem from '../src/components/List/ListItem';
+import PageSetup from '../src';
 
 const HomePage = ({ className }) => (
-  <MaterialThemeProvider theme={{ primary: '#03A9F4' }}>
+  <PageSetup>
     <List className={className}>
       <h1>Styled Material Components</h1>
       <ListItem>
@@ -77,7 +76,7 @@ const HomePage = ({ className }) => (
         <Link href="/switches"><a>Switches Page</a></Link>
       </ListItem>
     </List>
-  </MaterialThemeProvider>
+  </PageSetup>
 );
 
 const StyledHomePage = styled(HomePage)`

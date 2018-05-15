@@ -39,3 +39,4 @@ export { default as typography } from './mixins/typography';
 
 export { default as ThemeProvider } from './theme/ThemeProvider';
 export * from './theme/defaultTheme';
+export { default as PageSetup } from '../pages/PageSetup';
