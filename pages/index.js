@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import Link from 'next/link';
 import List from '../src/components/List/List';
 import ListItem from '../src/components/List/ListItem';
-import PageSetup from '../src';
+import PageSetup from './PageSetup';
 
 const HomePage = ({ className }) => (
   <PageSetup>
