@@ -40,28 +40,24 @@ const BaseDrawer = (props) => {
     right: props.attachment === 'right',
     'smc-drawer': true,
   });
-  return (
-    <aside className={drawerClass}>
-      {props.children}
-    </aside>
-  );
+  return <aside className={drawerClass}>{props.children}</aside>;
 };
 
 const StyledDrawer = styled(BaseDrawer)`
   background-color: white;
-  ${props => props.temporary && elevation(16)}
-  bottom: 0;
+  ${props => props.temporary && elevation(16)} bottom: 0;
   top: 0;
-  overflow: hidden;
+  overflow: scroll;
   position: absolute;
-  transition: transform .195s;
-  ${drawerSizing}
-  will-change: transform;
+  transition: transform 0.195s;
+  ${drawerSizing} will-change: transform;
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
   touch-action: none;
-  ${props => props.temporary && `
+  ${props =>
+    props.temporary &&
+    `
     width: 320px;
     z-index: 5
   `};
@@ -69,44 +65,37 @@ const StyledDrawer = styled(BaseDrawer)`
   &.left {
     left: 0;
     transform: translateX(-107%);
-    ${props => !props.temporary && `border-right: 1px solid rgba(0,0,0,0.35);`}
+    ${props => !props.temporary && `border-right: 1px solid rgba(0,0,0,0.35);`};
   }
 
   &.right {
     right: 0;
     transform: translateX(107%);
-    ${props => !props.temporary && `
+    ${props =>
+    !props.temporary &&
+      `
       border-left: 1px solid rgba(0,0,0,0.35);
     `};
   }
 
   &.open {
-    transition: transform .225s;
+    transition: transform 0.225s;
     transform: none;
   }
 `;
 
-export const Drawer = ({
-  open,
-  children,
-  handleRequestClose,
-  temporary,
-  attachment,
-}) => (
+export const Drawer = ({ open, children, handleRequestClose, temporary, attachment }) => (
   <Portal
     open={open}
     shift={!temporary}
     attachment={attachment}
     onRequestClose={handleRequestClose}
     renderContents={() => (
-      <StyledDrawer
-        attachment={attachment}
-        open={open}
-        temporary={temporary}
-      >
+      <StyledDrawer attachment={attachment} open={open} temporary={temporary}>
         {children}
       </StyledDrawer>
-    )} />
+    )}
+  />
 );
 
 Drawer.defaultProps = {

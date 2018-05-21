@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import Router from 'next/router';
+import styled from 'styled-components';
 import { Drawer, Icon, Toolbar, ToolbarTitle, ThemeProvider } from '../src';
+import { MenuIcon } from '../src/icons';
+import TopLevelMenuItem from './TopLevelMenuItem';
 
 const GithubIcon = ({ onClick }) => (
   <Icon onClick={onClick}>
@@ -8,20 +11,49 @@ const GithubIcon = ({ onClick }) => (
   </Icon>
 );
 
-const PageSetup = ({ children }) => (
-  <ThemeProvider>
-    <Drawer
-      attachment="left"
-      open={children.persistenLeft}
-    ></Drawer>
-    <Toolbar>
-      <ToolbarTitle>Styled Material Components</ToolbarTitle>
-      <GithubIcon
-        onClick={() => Router.push('https://github.com/MerlinLabs/styled-material-components')}
-      />
-    </Toolbar>
-    {children}
-  </ThemeProvider>
-);
+class PageSetup extends Component {
+  state = {
+    temporaryLeft: false,
+  };
+
+  toggleTemporaryLeft = () =>
+    this.setState(prevState => ({
+      temporaryLeft: !prevState.temporaryLeft,
+    }));
+
+  render() {
+    const { children } = this.props;
+    return (
+      <ThemeProvider>
+        <StyledDrawer
+          temporary
+          attachment="left"
+          open={this.state.temporaryLeft}
+          handleRequestClose={this.toggleTemporaryLeft}
+        >
+          <div onClick={this.toggleTemporaryLeft}>
+            <Toolbar>
+              <ToolbarTitle>Styled Material Components</ToolbarTitle>
+            </Toolbar>
+          </div>
+          <TopLevelMenuItem />
+        </StyledDrawer>
+        <Toolbar>
+          <ToolbarTitle Icon={<MenuIcon onClick={this.toggleTemporaryLeft} />}>
+            Styled Material Components
+          </ToolbarTitle>
+          <GithubIcon
+            onClick={() => Router.push('https://github.com/MerlinLabs/styled-material-components')}
+          />
+        </Toolbar>
+        {children}
+      </ThemeProvider>
+    );
+  }
+}
+
+const StyledDrawer = styled(Drawer)`
+  overflow: scroll;
+`;
 
 export default PageSetup;
