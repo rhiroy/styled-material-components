@@ -1,7 +1,4 @@
-import React, { Component } from 'react';
 import styled from 'styled-components';
-import Link from 'next/link';
-import { Drawer, List, ListItem } from '../src';
 import PageSetup from './PageSetup';
 
 const HomePage = () => <PageSetup />;
