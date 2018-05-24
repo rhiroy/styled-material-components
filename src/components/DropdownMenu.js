@@ -69,14 +69,14 @@ export default class DropdownMenu extends Component {
     this.setState({ isOpen: true });
   };
 
-  onSelectMenuItem = (e): void => {
+  onSelectMenuItem = (e) => {
     if (this.props.onItemClick) {
       this.props.onItemClick(e);
     }
     this.setState({ selected: e.target.value });
   };
 
-  toggleSelect = (e): boolean => {
+  toggleSelect = (e) => {
     e.preventDefault();
     this.setState({ isOpen: !this.state.isOpen });
   };

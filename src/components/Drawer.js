@@ -35,6 +35,7 @@ injectGlobal`
 const BaseDrawer = (props) => {
   const drawerClass = classNames({
     [props.className]: true,
+    // className: props.className,
     open: props.open,
     left: props.attachment === 'left',
     right: props.attachment === 'right',
@@ -47,7 +48,7 @@ const StyledDrawer = styled(BaseDrawer)`
   background-color: white;
   ${props => props.temporary && elevation(16)} bottom: 0;
   top: 0;
-  overflow: scroll;
+  overflow: inherit;
   position: absolute;
   transition: transform 0.195s;
   ${drawerSizing} will-change: transform;

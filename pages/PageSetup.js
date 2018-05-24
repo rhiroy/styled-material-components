@@ -53,7 +53,7 @@ class PageSetup extends Component {
 }
 
 const StyledDrawer = styled(Drawer)`
-  overflow: scroll;
+  /* overflow: scroll; */
 `;
 
 export default PageSetup;
