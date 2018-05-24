@@ -1,7 +1,6 @@
 import styled from 'styled-components';
-import PageSetup from './PageSetup';
 
-const HomePage = () => <PageSetup />;
+const HomePage = () => (<h1>Home Page</h1>);
 
 const StyledHomePage = styled(HomePage)`
   padding: 25px;
