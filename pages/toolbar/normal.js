@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 import {
-  ThemeProvider,
   Toolbar,
   ToolbarTitle,
   ToolbarActions,
@@ -22,18 +21,14 @@ const Content = styled.div`
 
 export default () => (
   <PageContainer>
-    <ThemeProvider>
-      <Toolbar>
-        <ToolbarTitle Icon={<MenuIcon />}>Title</ToolbarTitle>
-        <ToolbarActions>
-          <FileDownloadIcon />
-          <PrintIcon />
-          <BookmarkIcon />
-        </ToolbarActions>
-      </Toolbar>
-      <Content>
-        {generateParagraphs(8)}
-      </Content>
-    </ThemeProvider>
+    <Toolbar>
+      <ToolbarTitle Icon={<MenuIcon />}>Title</ToolbarTitle>
+      <ToolbarActions>
+        <FileDownloadIcon />
+        <PrintIcon />
+        <BookmarkIcon />
+      </ToolbarActions>
+    </Toolbar>
+    <Content>{generateParagraphs(8)}</Content>
   </PageContainer>
 );

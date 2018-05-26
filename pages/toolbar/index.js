@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
-// import MaterialThemeProvider from '../src/theme/ThemeProvider';
 import {
-  ThemeProvider,
   Toolbar,
   ToolbarTitle,
   Drawer,
@@ -34,7 +32,7 @@ const ScrollableFrame = styled.iframe`
   overflow-x: hidden;
   outline: none;
   border: none;
-  ${elevation(2)}
+  ${elevation(2)};
 `;
 
 export default class ToolbarPage extends Component {
@@ -46,15 +44,17 @@ export default class ToolbarPage extends Component {
     doubleNav: 'test7',
   };
 
-  toggleTemporaryRight = () => this.setState(prevState => ({
-    persistentRight: !prevState.persistentRight ? true : prevState.persistentRight,
-    temporaryRight: !prevState.temporaryRight,
-  }));
+  toggleTemporaryRight = () =>
+    this.setState(prevState => ({
+      persistentRight: !prevState.persistentRight ? true : prevState.persistentRight,
+      temporaryRight: !prevState.temporaryRight,
+    }));
 
-  togglePersistentRight = () => this.setState(prevState => ({
-    persistentRight: !prevState.persistentRight,
-    temporaryRight: false,
-  }));
+  togglePersistentRight = () =>
+    this.setState(prevState => ({
+      persistentRight: !prevState.persistentRight,
+      temporaryRight: false,
+    }));
 
   closeIcon = () => (
     <a onClick={this.togglePersistentRight} className={`closeIcon`}>
@@ -68,23 +68,21 @@ export default class ToolbarPage extends Component {
 
   render() {
     return (
-      <ThemeProvider>
-        <PageContainer>
-          <Content>
-            <h1>Toolbars</h1>
-            <Row>
-              <Column>
-                <h2>Normal Toolbar</h2>
-                <ScrollableFrame src="/toolbar/normal" />
-              </Column>
-              <Column>
-                <h2>Fixed Toolbar</h2>
-                <ScrollableFrame src="/toolbar/fixed" />
-              </Column>
-            </Row>
-          </Content>
-        </PageContainer>
-      </ThemeProvider>
+      <PageContainer>
+        <Content>
+          <h1>Toolbars</h1>
+          <Row>
+            <Column>
+              <h2>Normal Toolbar</h2>
+              <ScrollableFrame src="/toolbar/normal" />
+            </Column>
+            <Column>
+              <h2>Fixed Toolbar</h2>
+              <ScrollableFrame src="/toolbar/fixed" />
+            </Column>
+          </Row>
+        </Content>
+      </PageContainer>
     );
   }
 }

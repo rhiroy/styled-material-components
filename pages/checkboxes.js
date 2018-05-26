@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import styled from 'styled-components';
-import { ThemeProvider, Checkbox, Box, CheckMark, List, ListItem, defaultTheme } from '../src';
+import { Checkbox, Box, CheckMark, List, ListItem } from '../src';
 
 const StyledCheckbox = Checkbox.extend`
   ${Box} {
@@ -55,60 +55,58 @@ class CheckboxesPage extends PureComponent {
   render() {
     const { checked } = this.state;
     return (
-      <ThemeProvider theme={defaultTheme}>
-        <List>
-          <h1 style={{ marginLeft: 25 }}>Checkboxes</h1>
-          <ListItem>
-            <Checkbox id="checkbox2" />
-            <label htmlFor="checkbox2">Accent (default)</label>
-          </ListItem>
-          <ListItem>
-            <Checkbox primary label="Click Me" id="checkbox1" />
-            <label htmlFor="checkbox1">Primary</label>
-          </ListItem>
-          <ListItem>
-            <Checkbox default="checked" id="checkbox3" />
-            <label htmlFor="checkbox3">Defaults to Checked</label>
-          </ListItem>
-          <ListItem>
-            <Checkbox disabled id="checkbox4" />
-            <label htmlFor="checkbox4">Disabled</label>
-          </ListItem>
-          <ListItem>
-            <Checkbox checked disabled id="checkbox5" />
-            <label htmlFor="checkbox5">Checked and Disabled</label>
-          </ListItem>
-          <ListItem>
-            <Checkbox
-              checked={checked[1]}
-              onChange={() => {
-                this.handleChange(1);
-              }}
-              id="checkbox6"
-            />
-            <label htmlFor="checkbox6">Controlled Checkbox</label>
-          </ListItem>
-          <ListItem>
-            <Checkbox default="indeterminate" id="checkbox7" />
-            <label htmlFor="checkbox7">Indeterminate Checkbox</label>
-          </ListItem>
-          <ListItem>
-            <StyledCheckbox id="checkbox8" />
-            <label htmlFor="checkbox8">Custom Checkbox</label>
-          </ListItem>
-          <ListItem>
-            <StyledCheckbox2
-              checked={checked[2]}
-              onChange={() => {
-                this.handleChange(2);
-              }}
-              id="checkbox9"
-              checkMark={Square}
-            />
-            <label htmlFor="checkbox9">Custom Checkbox</label>
-          </ListItem>
-        </List>
-      </ThemeProvider>
+      <List>
+        <h1 style={{ marginLeft: 25 }}>Checkboxes</h1>
+        <ListItem>
+          <Checkbox id="checkbox2" />
+          <label htmlFor="checkbox2">Accent (default)</label>
+        </ListItem>
+        <ListItem>
+          <Checkbox primary label="Click Me" id="checkbox1" />
+          <label htmlFor="checkbox1">Primary</label>
+        </ListItem>
+        <ListItem>
+          <Checkbox default="checked" id="checkbox3" />
+          <label htmlFor="checkbox3">Defaults to Checked</label>
+        </ListItem>
+        <ListItem>
+          <Checkbox disabled id="checkbox4" />
+          <label htmlFor="checkbox4">Disabled</label>
+        </ListItem>
+        <ListItem>
+          <Checkbox checked disabled id="checkbox5" />
+          <label htmlFor="checkbox5">Checked and Disabled</label>
+        </ListItem>
+        <ListItem>
+          <Checkbox
+            checked={checked[1]}
+            onChange={() => {
+              this.handleChange(1);
+            }}
+            id="checkbox6"
+          />
+          <label htmlFor="checkbox6">Controlled Checkbox</label>
+        </ListItem>
+        <ListItem>
+          <Checkbox default="indeterminate" id="checkbox7" />
+          <label htmlFor="checkbox7">Indeterminate Checkbox</label>
+        </ListItem>
+        <ListItem>
+          <StyledCheckbox id="checkbox8" />
+          <label htmlFor="checkbox8">Custom Checkbox</label>
+        </ListItem>
+        <ListItem>
+          <StyledCheckbox2
+            checked={checked[2]}
+            onChange={() => {
+              this.handleChange(2);
+            }}
+            id="checkbox9"
+            checkMark={Square}
+          />
+          <label htmlFor="checkbox9">Custom Checkbox</label>
+        </ListItem>
+      </List>
     );
   }
 }

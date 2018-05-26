@@ -1,3 +1,4 @@
+import React from 'react';
 import styled from 'styled-components';
 import {
   Button,
@@ -9,7 +10,6 @@ import {
   ListItemText,
   ListSubheader,
   Snackbar,
-  ThemeProvider,
   withRipple,
 } from '../src';
 import { AddIcon, MicIcon, GradeIcon, PowerSettingsNewIcon } from '../src/icons';

@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import Router from 'next/router';
 import styled from 'styled-components';
-import { Drawer, Icon, Toolbar, ToolbarTitle, ThemeProvider } from '../src';
+import { Drawer, Icon, Toolbar, ToolbarTitle, typography } from '../src';
+import elevation from '../src/mixins/elevation';
 import { MenuIcon } from '../src/icons';
 import TopLevelMenuItem from './TopLevelMenuItem';
 
@@ -13,47 +14,70 @@ const GithubIcon = ({ onClick }) => (
 
 class PageSetup extends Component {
   state = {
-    temporaryLeft: false,
+    drawerShowing: false,
   };
 
-  toggleTemporaryLeft = () =>
+  toggleDrawer = () =>
     this.setState(prevState => ({
-      temporaryLeft: !prevState.temporaryLeft,
+      drawerShowing: !prevState.drawerShowing,
     }));
 
   render() {
     const { children } = this.props;
+    const { drawerShowing } = this.state;
     return (
-      <ThemeProvider>
+      <div>
         <StyledDrawer
           temporary
           attachment="left"
-          open={this.state.temporaryLeft}
-          handleRequestClose={this.toggleTemporaryLeft}
+          open={this.state.drawerShowing}
+          handleRequestClose={this.toggleDrawer}
         >
-          <div onClick={this.toggleTemporaryLeft}>
-            <Toolbar>
-              <ToolbarTitle>Styled Material Components</ToolbarTitle>
-            </Toolbar>
+          <div onClick={this.toggleDrawer}>
+            <DrawerHeader>Styled Material Components</DrawerHeader>
           </div>
           <TopLevelMenuItem />
         </StyledDrawer>
-        <Toolbar>
-          <ToolbarTitle Icon={<MenuIcon onClick={this.toggleTemporaryLeft} />}>
-            Styled Material Components
+        <Toolbar fixed>
+          <ToolbarTitle Icon={<MenuIcon onClick={this.toggleDrawer} />}>
+            {!drawerShowing && 'Styled Material Components'}
           </ToolbarTitle>
           <GithubIcon
             onClick={() => Router.push('https://github.com/MerlinLabs/styled-material-components')}
           />
         </Toolbar>
-        {children}
-      </ThemeProvider>
+        <PageWrapper>
+          <Content>{children}</Content>
+        </PageWrapper>
+      </div>
     );
   }
 }
 
+const PageWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100vh - 64px);
+  width: 100vw;
+  align-items: center;
+  padding: 88px 24px 24px;
+`;
+
+const Content = styled.div`
+  max-width: 960px;
+  width: 100%;
+  background-color: white;
+  ${elevation(4)};
+  padding: 24px;
+`;
+
 const StyledDrawer = styled(Drawer)`
-  /* overflow: scroll; */
+  overflow: scroll;
+`;
+
+const DrawerHeader = styled.div`
+  padding: 16px;
+  ${typography('title')};
 `;
 
 export default PageSetup;

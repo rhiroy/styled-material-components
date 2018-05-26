@@ -1,6 +1,6 @@
 import { Component } from 'react';
 import styled from 'styled-components';
-import { List, MenuItem, ThemeProvider } from '../src';
+import { List, MenuItem } from '../src';
 
 const array = [
   { item: 'Avatars Page', link: '/avatars' },
@@ -41,17 +41,15 @@ class SubLevelMenuItem extends Component {
   };
   render() {
     return (
-      <ThemeProvider>
-        <List>
-          {array.map(element => (
-            <Button key={element.item} href={element.link}>
-              <MenuItem onClick={() => this.handleSelect(element.item)}>
-                <P>{`${element.item}`}</P>
-              </MenuItem>
-            </Button>
-          ))}
-        </List>
-      </ThemeProvider>
+      <List>
+        {array.map(element => (
+          <Button key={element.item} href={element.link}>
+            <MenuItem onClick={() => this.handleSelect(element.item)}>
+              <P>{`${element.item}`}</P>
+            </MenuItem>
+          </Button>
+        ))}
+      </List>
     );
   }
 }

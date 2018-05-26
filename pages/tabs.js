@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { TabBar, TabContent, Tab, Tabs, ThemeProvider, Icon } from '../src';
+import { TabBar, TabContent, Tab, Tabs, Icon } from '../src';
 
 // TODO: (future) scrollable tabs
 
@@ -49,28 +49,26 @@ class ControlledTabs extends React.Component {
 }
 
 const TabsPage = () => (
-  <ThemeProvider theme={{ primary: '#03A9F4' }}>
-    <PageContainer>
-      <Content>
-        <h1>Tabs</h1>
+  <PageContainer>
+    <Content>
+      <h1>Tabs</h1>
 
-        <h2>Default Tabs</h2>
-        <Container>
-          <ControlledTabs />
-        </Container>
+      <h2>Default Tabs</h2>
+      <Container>
+        <ControlledTabs />
+      </Container>
 
-        <h2>Fixed Tabs</h2>
-        <Container>
-          <ControlledTabs fixed />
-        </Container>
+      <h2>Fixed Tabs</h2>
+      <Container>
+        <ControlledTabs fixed />
+      </Container>
 
-        <h2>Fixed Tabs with icons</h2>
-        <Container>
-          <ControlledTabs fixed showIcon />
-        </Container>
-      </Content>
-    </PageContainer>
-  </ThemeProvider>
+      <h2>Fixed Tabs with icons</h2>
+      <Container>
+        <ControlledTabs fixed showIcon />
+      </Container>
+    </Content>
+  </PageContainer>
 );
 
 export default TabsPage;

@@ -2,7 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 import {
   Avatar,
-  ThemeProvider,
 } from '../src';
 
 const StyledAvatar = Avatar.extend`
@@ -20,7 +19,7 @@ const CodeBlock = styled.div`
 `;
 
 const AvatarsPage = () => (
-  <ThemeProvider theme={{ primary: '#03A9F4' }}>
+  <React.Fragment>
     <h1>Avatars</h1>
         Avatars can accept first and last name and return initials
     <CodeBlock> {'<Avatar name="Bruce Wayne" />'}</CodeBlock>
@@ -44,7 +43,7 @@ const AvatarsPage = () => (
         Or accept an image src
     <CodeBlock> {'<Avatar size={128} src="https://bit.ly/2GErNQL" />'}</CodeBlock>
     <Avatar size={128} src='https://bit.ly/2GErNQL' />
-  </ThemeProvider>
+  </React.Fragment>
 );
 
 const StyledAvatarsPage = styled(AvatarsPage)`
