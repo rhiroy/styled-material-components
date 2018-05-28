@@ -1,15 +1,35 @@
+import React, { Component } from 'react';
 import styled from 'styled-components';
 import elevation from '../../src/mixins/elevation';
 import ToolbarComponent from '../components/ToolbarComponent';
+import MenuDrawer from '../components/MenuDrawer';
 
-const PageSetup = ({ children }) => (
-  <div>
-    <ToolbarComponent />
-    <PageWrapper>
-      <Content>{children}</Content>
-    </PageWrapper>
-  </div>
-);
+class PageSetup extends Component {
+  state = {
+    drawerShowing: false,
+  };
+
+  toggleDrawer = () => {
+    this.setState(prevState => ({
+      drawerShowing: !prevState.drawerShowing,
+    }));
+  };
+
+  render() {
+    const { children } = this.props;
+    const { drawerShowing } = this.state;
+    const toggleDrawer = this.toggleDrawer;
+    return (
+      <div>
+        <ToolbarComponent toggleDrawer={toggleDrawer} drawerShowing={drawerShowing} />
+        {drawerShowing && <MenuDrawer toggleDrawer={toggleDrawer} drawerShowing={drawerShowing} />}
+        <PageWrapper>
+          <Content>{children}</Content>
+        </PageWrapper>
+      </div>
+    );
+  }
+}
 
 const PageWrapper = styled.div`
   display: flex;

@@ -1,8 +1,7 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Router from 'next/router';
 import { Icon, Toolbar, ToolbarTitle } from '../../src';
 import { MenuIcon } from '../../src/icons';
-import MenuDrawer from './MenuDrawer';
 
 const GithubIcon = ({ onClick }) => (
   <Icon onClick={onClick}>
@@ -10,39 +9,20 @@ const GithubIcon = ({ onClick }) => (
   </Icon>
 );
 
-class ToolbarComponent extends Component {
-  state = {
-    drawerShowing: false,
-  };
-
-  toggleDrawer = () => {
-    this.setState(prevState => ({
-      drawerShowing: !prevState.drawerShowing,
-    }));
-  };
-
-  render() {
-    const { drawerShowing } = this.state;
-    return (
-      <div>
-        <Toolbar fixed>
-          <ToolbarTitle Icon={<MenuIcon onClick={this.toggleDrawer} />}>
-            {drawerShowing ? (
-              <MenuDrawer
-                drawerShowing={this.state.drawerShowing}
-                toggleDrawer={this.toggleDrawer}
-              />
-            ) : (
-              'Styled Material Components'
-            )}
-          </ToolbarTitle>
-          <GithubIcon
-            onClick={() => Router.push('https://github.com/MerlinLabs/styled-material-components')}
-          />
-        </Toolbar>
-      </div>
-    );
-  }
-}
+const ToolbarComponent = ({ toggleDrawer, drawerShowing }) => (
+  <div>
+    <Toolbar fixed>
+      <ToolbarTitle
+        Title={!drawerShowing && 'Styled Material Components'}
+        Icon={<MenuIcon onClick={toggleDrawer} />}
+      >
+        {!drawerShowing && 'Styled Material Components'}
+      </ToolbarTitle>
+      <GithubIcon
+        onClick={() => Router.push('https://github.com/MerlinLabs/styled-material-components')}
+      />
+    </Toolbar>
+  </div>
+);
 
 export default ToolbarComponent;
