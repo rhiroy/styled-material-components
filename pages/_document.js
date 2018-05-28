@@ -2,10 +2,15 @@ import Document, { Head, Main, NextScript } from 'next/document';
 import { ServerStyleSheet } from 'styled-components';
 
 export default class MyDocument extends Document {
-  render() {
+  static getInitialProps({ renderPage }) {
     const sheet = new ServerStyleSheet();
-    const main = sheet.collectStyles(<Main />);
+    const page = renderPage(App => props => sheet.collectStyles(<App {...props} />));
     const styleTags = sheet.getStyleElement();
+    return { ...page, styleTags };
+  }
+
+  render() {
+    const { styleTags } = this.props;
     return (
       <html lang="en">
         <Head>
@@ -15,9 +20,9 @@ export default class MyDocument extends Document {
         </Head>
         <body style={{ overflow: 'visible' }}>
           <div className="root" style={{ width: '100%' }}>
-            {main}
+            <Main />
+            <NextScript />
           </div>
-          <NextScript />
         </body>
       </html>
     );

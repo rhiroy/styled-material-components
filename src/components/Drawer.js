@@ -48,7 +48,8 @@ const StyledDrawer = styled(BaseDrawer)`
   background-color: white;
   ${props => props.temporary && elevation(16)} bottom: 0;
   top: 0;
-  overflow: inherit;
+  overflow-x: hidden;
+  overflow-y: auto;
   position: absolute;
   transition: transform 0.195s;
   ${drawerSizing} will-change: transform;

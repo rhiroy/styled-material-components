@@ -4,6 +4,7 @@ const topLevelPaths = {
 };
 
 const componentDemoPaths = {
+  '/docs/avatars': { page: '/docs/components/avatars' },
   '/docs/bottomsheets': { page: '/docs/components/bottomsheets' },
   '/docs/buttons': { page: '/docs/components/buttons' },
   '/docs/cards': { page: '/docs/components/cards' },
@@ -24,8 +25,6 @@ const componentDemoPaths = {
   '/docs/tabs': { page: '/docs/components/tabs' },
   '/docs/text-fields': { page: '/docs/components/text-fields' },
   '/docs/toolbar': { page: '/docs/components/toolbar' },
-  '/docs/toolbar/fixed': { page: '/docs/components/toolbar/fixed' },
-  '/docs/toolbar/normal': { page: '/docs/components/toolbar/normal' },
 };
 
 module.exports = {

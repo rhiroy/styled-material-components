@@ -5,23 +5,12 @@ import { Drawer, typography } from '../../src';
 
 const MenuDrawer = ({ drawerShowing, toggleDrawer }) => (
   <div>
-    <StyledDrawer
-      temporary
-      attachment="left"
-      open={drawerShowing}
-      handleRequestClose={toggleDrawer}
-    >
-      <div onClick={toggleDrawer}>
-        <DrawerHeader>Styled Material Components</DrawerHeader>
-      </div>
+    <Drawer temporary attachment="left" open={drawerShowing} handleRequestClose={toggleDrawer}>
+      <DrawerHeader>Styled Material Components</DrawerHeader>
       <TopLevelMenuItem />
-    </StyledDrawer>
+    </Drawer>
   </div>
 );
-
-const StyledDrawer = styled(Drawer)`
-  overflow: scroll;
-`;
 
 const DrawerHeader = styled.div`
   padding: 16px;

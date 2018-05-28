@@ -41,7 +41,7 @@ class SubLevelMenuItem extends Component {
   };
   render() {
     return (
-      <StyledList>
+      <List>
         {array.map(element => (
           <Button key={element.item} href={element.link}>
             <MenuItem
@@ -53,7 +53,7 @@ class SubLevelMenuItem extends Component {
             </MenuItem>
           </Button>
         ))}
-      </StyledList>
+      </List>
     );
   }
 }
@@ -65,10 +65,6 @@ const Button = styled.a`
 
 const P = styled.p`
   padding-left: 20px;
-`;
-
-const StyledList = styled(List)`
-  overflow: scroll;
 `;
 
 export default SubLevelMenuItem;
