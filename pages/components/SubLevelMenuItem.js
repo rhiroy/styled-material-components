@@ -41,15 +41,19 @@ class SubLevelMenuItem extends Component {
   };
   render() {
     return (
-      <List>
+      <StyledList>
         {array.map(element => (
           <Button key={element.item} href={element.link}>
-            <MenuItem onClick={() => this.handleSelect(element.item)}>
+            <MenuItem
+              key={element.item}
+              href={element.link}
+              onClick={() => this.handleSelect(element.item)}
+            >
               <P>{`${element.item}`}</P>
             </MenuItem>
           </Button>
         ))}
-      </List>
+      </StyledList>
     );
   }
 }
@@ -61,6 +65,10 @@ const Button = styled.a`
 
 const P = styled.p`
   padding-left: 20px;
+`;
+
+const StyledList = styled(List)`
+  overflow: scroll;
 `;
 
 export default SubLevelMenuItem;
