@@ -1,10 +1,8 @@
 import { Component, Fragment } from 'react';
-import styled from 'styled-components';
 import { MenuItem } from '../../src';
 import SubLevelMenuItem from './SubLevelMenuItem';
 
-const array = [{ item: 'Getting Started' }, { item: 'Components' }, { item: 'More' }];
-class TopLevelMenuItem extends Component {
+export default class TopLevelMenuItem extends Component {
   state = {
     open: false,
     value: '',
@@ -22,26 +20,11 @@ class TopLevelMenuItem extends Component {
     const isItemSelected = this.state.open;
     return (
       <Fragment>
-        {array.map(element => (
-          <Button key={element.item} href={element.link}>
-            <MenuItem onClick={() => this.handleSelect(element.item)}>
-              <p>{`${element.item}`}</p>
-            </MenuItem>
-            {isItemSelected && itemSelected === 'Components' ? (
-              <SubLevelMenuItem />
-            ) : (
-              !isItemSelected
-            )}
-          </Button>
-        ))}
+        <MenuItem onClick={() => this.handleSelect('Getting Started')}>Getting Started</MenuItem>
+        <MenuItem onClick={() => this.handleSelect('Components')}>Components</MenuItem>
+        {isItemSelected && itemSelected === 'Components' ? <SubLevelMenuItem /> : !isItemSelected}
+        <MenuItem onClick={() => this.handleSelect('More')}>More</MenuItem>
       </Fragment>
     );
   }
 }
-
-const Button = styled.a`
-  color: #585c63;
-  text-decoration: none;
-`;
-
-export default TopLevelMenuItem;
